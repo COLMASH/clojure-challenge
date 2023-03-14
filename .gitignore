@@ -12,3 +12,6 @@ pom.xml.asc
 .hgignore
 .hg/
 /.calva
+.calva
+calva
+/calva
