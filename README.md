@@ -8,4 +8,4 @@ In the project directory, you can run:
 
 ### `lein run`
 
-Runs the project in your console\
+Runs the project in your console
