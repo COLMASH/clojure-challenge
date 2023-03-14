@@ -4,7 +4,7 @@
 (use 'clojure-dataico.invoice)
 
 (defn find-invoice-items [invoice]
-  (println "Solution to Problem 1: Those are the items 📦 that satisfy the conditions asked")
+  (println ">>> Solution to Problem 1: Those are the items that satisfy the conditions asked (see find-invoice-items function inside core.clj)")
   (println (->> invoice
        :invoice/items
        (filter (fn [item]
