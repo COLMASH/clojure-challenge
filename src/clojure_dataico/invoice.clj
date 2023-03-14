@@ -1,4 +1,6 @@
-{:invoice/id    "i1"
+(ns clojure-dataico.invoice)
+
+(def invoice {:invoice/id    "i1"
  :invoice/items [{:invoice-item/id          "ii1"
                   :invoice-item/sku         "SKU 1"
                   :taxable/taxes            [{:tax/id       "t1"
@@ -27,3 +29,4 @@
                   :retentionable/retentions [{:retention/id       "r3"
                                               :retention/category :ret_fuente
                                               :retention/rate     2}]}]}
+)
