@@ -1,6 +1,6 @@
-(ns invoice-spec
+(ns clojure-dataico.invoice-spec
   (:require
-    [clojure.spec.alpha :as s] ))
+   [clojure.spec.alpha :as s]))
 
 (s/def :customer/name string?)
 (s/def :customer/email string?)
@@ -30,3 +30,4 @@
   (s/keys :req [:invoice/issue-date
                 :invoice/customer
                 :invoice/items]))
+
