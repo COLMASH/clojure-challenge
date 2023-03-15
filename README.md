@@ -10,7 +10,7 @@ Runs the project in your console
 
 ## Main Funtions File
 
-src/clojure/core.clj
+src/clojure_dataico/core.clj
 
 ## Getting started
 
