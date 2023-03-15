@@ -2,47 +2,33 @@
   (:require [clojure.test :refer :all] [clojure-dataico.core :refer :all])
   (:require [clojure-dataico.invoice-item :as invoice-item]))
 
-(deftest test-subtotal-1
-  (testing "Tests the subtotal function"
-
-    (def case-1 {:invoice-item/precise-quantity 3.0
+(deftest test-subtotal 
+  (testing "Tests subtotal function when precise-quantity = 0" 
+    (def case-5 {:invoice-item/precise-quantity 0.0
+                 :invoice-item/precise-price 100.0
+                 :invoice-item/discount-rate 50.0}) 
+    (is (= (invoice-item/subtotal case-5) 0.0)))
+  
+  (testing "Tests subtotal function when discount-rate = 0%"
+    (def case-1 {:invoice-item/precise-quantity 5.0
+                 :invoice-item/precise-price 100.0
+                 :invoice-item/discount-rate 0.0})
+    (is (= (invoice-item/subtotal case-1) 500.0)))
+  
+  (testing "Tests subtotal function when discount-rate = 100%"
+    (def case-2 {:invoice-item/precise-quantity 5.0
                  :invoice-item/precise-price 100.0
                  :invoice-item/discount-rate 100.0})
+    (is (= (invoice-item/subtotal case-2) 0.0)))
+  
+  (testing "Tests subtotal function when precise-price = 0" 
+    (def case-3 {:invoice-item/precise-quantity 5.0
+                 :invoice-item/precise-price 0.0
+                 :invoice-item/discount-rate 50.0}) 
+    (is (= (invoice-item/subtotal case-3) 0.0)))
+  
+   (testing "Tests subtotal function when precise-price :key is missing (default must be 0)"
+    (def case-4 {:invoice-item/precise-quantity 5.0
+                 :invoice-item/precise-price 100.0}) 
+    (is (= (invoice-item/subtotal case-4) 500.0))))
 
-    (is (= (invoice-item/subtotal case-1) 0.0))))
-
-(deftest test-subtotal-2
-  (testing "Tests the subtotal function"
-
-    (def case-2 {:invoice-item/precise-quantity 3.0
-                 :invoice-item/precise-price 100.0
-                 :invoice-item/discount-rate 100.0})
-
-    (is (= (invoice-item/subtotal case-2) 0.0))))
-
-(deftest test-subtotal-3
-  (testing "Tests the subtotal function"
-    
-    (def case-3 {:invoice-item/precise-quantity 3.0
-                 :invoice-item/precise-price 100.0
-                 :invoice-item/discount-rate 100.0})
-    
-    (is (= (invoice-item/subtotal case-3) 0.0))))
-
-(deftest test-subtotal-4 
-  (testing "Tests the subtotal function"
-    
-    (def case-4 {:invoice-item/precise-quantity 3.0
-                 :invoice-item/precise-price 100.0
-                 :invoice-item/discount-rate 100.0})
-    
-    (is (= (invoice-item/subtotal case-4) 0.0))))
-
-(deftest test-subtotal-5
-  (testing "Tests the subtotal function"
-    
-    (def case-5 {:invoice-item/precise-quantity 3.0
-                 :invoice-item/precise-price 100.0
-                 :invoice-item/discount-rate 100.0})
-    
-    (is (= (invoice-item/subtotal case-5) 0.0))))
