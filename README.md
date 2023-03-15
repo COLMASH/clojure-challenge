@@ -8,6 +8,10 @@ In the project directory, you can run:
 
 Runs the project in your console
 
+### `lein test`
+
+Launches all the tests described inside the folder test/clojure_dataico/core_test.clj
+
 ## Main Funtions File
 
 src/clojure_dataico/core.clj

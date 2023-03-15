@@ -1,4 +1,4 @@
-(ns invoice-item)
+(ns clojure-dataico.invoice-item)
 
 (defn- discount-factor [{:invoice-item/keys [discount-rate] 
                          :or {discount-rate 0}}]

@@ -1,8 +1,11 @@
-(ns clojure-dataico.core 
-(:require [clojure.data.json :as json]) 
-(:require [clojure.spec.alpha :as s] [clojure-dataico.invoice-spec :as cds])
-(:require [clj-time.coerce :as c] [clj-time.format :as f])
-(:gen-class))
+(ns clojure-dataico.core
+  (:require [clojure.data.json :as json])
+  (:require [clojure.spec.alpha :as s] [clojure-dataico.invoice-spec :as cds])
+  (:require [clj-time.coerce :as c] [clj-time.format :as f])
+  (:require [clojure-dataico.invoice-item :as invoice-item])
+  (:require [clojure.test :refer :all]
+            [clojure-dataico.core :refer :all])
+  (:gen-class))
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 1st PROBLEM <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -57,6 +60,8 @@
   (println "(s/valid? ::invoice invoice) =>" (s/valid? ::cds/invoice (:invoice spec-compliant-invoice))))
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 3rd PROBLEM <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
 
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MAIN FUNCTION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
