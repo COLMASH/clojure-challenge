@@ -13,7 +13,8 @@
 
 (defn find-invoice-items [invoice]
   (println ">>> PROBLEM 1 <<<")
-  (println "✅ Solution: Those are the items that satisfy the conditions asked (see find-invoice-items function inside core.clj)")
+  (println "✅ Solution: Those are the items that satisfy the conditions asked")
+  (println "(see find-invoice-items function inside src/clojure_dataico/core.clj)")
   (println (->> invoice
                 :invoice/items
                 (filter (fn [item]
@@ -54,15 +55,25 @@
 
 (defn invoice-generator [json-file]
   (println ">>> PROBLEM 2 <<<")
-  (println (str "✅ Solution: Parsing and transforming JSON file into a Spec compliant Clojure map (see invoice-generator function inside core.clj)..."))
+  (println (str "✅ Solution: Parsing and transforming JSON file into a Spec compliant Clojure map..."))
+  (println "(see invoice-generator function inside src/clojure_dataico/core.clj)")
   (def spec-compliant-invoice (postwalk-replace valid-invoice-keys (json/read-str json-file :value-fn number-as-double-formatter :key-fn keyword)))
-  (println "Checking if it is Spec compliant:")
+  (println "Checking if the resulting invoice map is Spec compliant:")
   (println "(s/valid? ::invoice invoice) =>" (s/valid? ::cds/invoice (:invoice spec-compliant-invoice))))
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 3rd PROBLEM <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-
+(defn tests-description []
+  (println ">>> PROBLEM 3 <<<")
+  (println (str "✅ Please run the \"lein test\" command in order to see the tests results"))
+  (println "(see deftest test-subtotal inside test/clojure_dataico/core_test.clj)")
+  (println "Those are the edge cases that I identified:")
+  (println "✓-1- Tests subtotal function when precise-quantity = 0")
+  (println "✓-2- Tests subtotal function when discount-rate = 0%")
+  (println "✓-3- Tests subtotal function when discount-rate = 100%")
+  (println "✓-4- Tests subtotal function when precise-price = 0")
+  (println "✓-5- Tests subtotal function when precise-price :key is missing (default must be 0)")
+  )
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MAIN FUNCTION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -70,4 +81,6 @@
   [& args]
   (println "Hello Daniel, here are my solutions 📝")
   (find-invoice-items invoice)
-  (invoice-generator json-file))
+  (invoice-generator json-file)
+  (tests-description)
+  )
