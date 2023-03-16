@@ -33,7 +33,7 @@
 (defn instant-date-formatter [value]
   (c/to-date (f/parse (f/formatter "dd/MM/yyyy") value)))
 
-(defn number-as-double-formatter [key value]
+(defn number-and-date-formatter [key value]
   (if (= key :tax_rate)
     (double value)
     (if (or (= key :issue_date) (= key :payment_date))
@@ -57,7 +57,7 @@
   (println ">>> PROBLEM 2 <<<")
   (println (str "✅ Solution: Parsing and transforming JSON file into a Spec compliant Clojure map..."))
   (println "(see invoice-generator function inside src/clojure_dataico/core.clj)")
-  (def spec-compliant-invoice (postwalk-replace valid-invoice-keys (json/read-str json-file :value-fn number-as-double-formatter :key-fn keyword)))
+  (def spec-compliant-invoice (postwalk-replace valid-invoice-keys (json/read-str json-file :value-fn number-and-date-formatter :key-fn keyword)))
   (println "Checking if the resulting invoice map is Spec compliant:")
   (println "(s/valid? ::invoice invoice) =>" (s/valid? ::cds/invoice (:invoice spec-compliant-invoice))))
 
