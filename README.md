@@ -12,9 +12,13 @@ Runs the project in your console
 
 Launches all the tests described inside the folder test/clojure_dataico/core_test.clj
 
-## Main Funtions File
+## Main Functions File
 
 src/clojure_dataico/core.clj
+
+## Main Tests File
+
+test/clojure_dataico/core_test.clj
 
 ## Getting started
 
