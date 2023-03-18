@@ -52,7 +52,7 @@
 
 (defn invoice-generator [json-file]
   (println ">>> PROBLEM 2 <<<")
-  (println (str "✅ Solution: Parsing and transforming JSON file into a Spec compliant Clojure map..."))
+  (println "✅ Solution: Parsing and transforming JSON file into a Spec compliant Clojure map...")
   (println "(see invoice-generator function inside src/clojure_dataico/core.clj)")
   (def spec-compliant-invoice (postwalk-replace valid-invoice-keys (json/read-str json-file :value-fn number-and-date-formatter :key-fn keyword)))
   (println "Checking if the resulting invoice map is Spec compliant:")
@@ -62,7 +62,7 @@
 
 (defn tests-description []
   (println ">>> PROBLEM 3 <<<")
-  (println (str "✅ Please run the \"lein test\" command in order to see the tests results"))
+  (println "✅ Please run the \"lein test\" command in order to see the tests results")
   (println "(see deftest test-subtotal inside test/clojure_dataico/core_test.clj)")
   (println "Those are the edge cases that I identified:")
   (println "✓-1- Tests subtotal function when precise-quantity = 0")
