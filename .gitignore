@@ -15,3 +15,15 @@ pom.xml.asc
 .calva
 calva
 /calva
+/.clj-kondo
+.clj-kondo
+clj-kondo
+/clj-kondo
+/.lsp
+.lsp
+lsp
+/lsp
+/.clj
+.clj
+clj
+/clj

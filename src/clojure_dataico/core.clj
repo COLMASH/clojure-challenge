@@ -30,9 +30,6 @@
 
 (def json-file (slurp "src/clojure_dataico/invoice.json"))
 
-(defn instant-date-formatter [value]
-  (c/to-date (f/parse (f/formatter "dd/MM/yyyy") value)))
-
 (defn number-and-date-formatter [key value]
   (if (= key :tax_rate)
     (double value)
