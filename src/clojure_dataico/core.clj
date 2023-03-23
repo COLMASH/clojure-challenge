@@ -76,7 +76,7 @@
 
 (defn -main
   [& args]
-  (println "Hello Daniel, here are my solutions 📝")
+  (println "Hello there, here are my solutions 📝")
   (find-invoice-items invoice)
   (invoice-generator json-file)
   (tests-description)
